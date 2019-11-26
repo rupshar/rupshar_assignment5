@@ -13,8 +13,14 @@ public class DiGraphPlayground {
       //    -- etc.
       // in order to convince yourself your code is producing
       // the correct behavior
-      millionTest();
+      mapTest();
     }
+  
+  	public static void emptyTest() {
+  		DiGraph d = new DiGraph();
+  		d.addNode(1, "a");
+  		d.delNode("a");
+  	}
   
   	public static void millionTest() {
   		String[] labels = new String[2000000];
@@ -87,11 +93,24 @@ public class DiGraphPlayground {
   		d.addEdge(7, "Pittsboro", "Sanford", 15, null);
   		d.addEdge(8, "Sanford", "Los Angeles", 3012, null);
   		
+//  		d.delEdge("Raleigh", "Durham");
+//  		d.delEdge("Durham", "Hillsborough");
+//  		d.delEdge("Chapel Hill", "Graham");
+//  		d.delEdge("Chapel Hill", "Carrboro");
+//  		d.delEdge("Carrboro", "Cary");
+//  		d.delEdge("Cary", "Raleigh");
+//  		d.delEdge("Pittsboro", "Cary");
+//  		d.delEdge("Pittsboro", "Sanford");
+//  		d.delEdge("Sanford", "Los Angeles");
+  		
   		ShortestPathInfo[] info = d.shortestPath("Pittsboro");
         
         for(int i = 0; i < info.length; i++) {
       	  System.out.println("(Node: " + info[i].getDest() + ", Distance: " + info[i].getTotalWeight() + ")");
         }
+        
+        System.out.println();
+        System.out.println(d.numEdges());
   		
   		
   	}

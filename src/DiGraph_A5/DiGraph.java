@@ -51,7 +51,7 @@ public class DiGraph implements DiGraphInterface {
 	}
 	
 	public boolean addEdge(long idNum, String sLabel, String dLabel) {
-		boolean edgeAdded = addEdge(idNum, sLabel, dLabel, 0, null);
+		boolean edgeAdded = addEdge(idNum, sLabel, dLabel, 1, null);
 		if(edgeAdded) {
 			return true;
 		} else {
@@ -71,13 +71,13 @@ public class DiGraph implements DiGraphInterface {
 			return false;
 		}
 		
-		Edge new_edge;
+		Edge new_edge = new Edge(idNum, sLabel, dLabel, weight, eLabel);
 		
-		if(weight == 0) {
-			new_edge = new Edge(idNum, sLabel, dLabel, 1, eLabel);
-		} else {
-			new_edge = new Edge(idNum, sLabel, dLabel, weight, eLabel);
-		}
+//		if(weight == 0) {
+//			new_edge = new Edge(idNum, sLabel, dLabel, 1, eLabel);
+//		} else {
+//			new_edge = new Edge(idNum, sLabel, dLabel, weight, eLabel);
+//		}
 		
 		edges_label.put(eLabel, new_edge);
 		edges_num.put(Long.toString(idNum), new_edge);
@@ -141,7 +141,7 @@ public class DiGraph implements DiGraphInterface {
 			return false;
 		} else if(!nodes_label.get(sLabel).out_edges.containsKey(dLabel) || nodes_label.get(sLabel).out_edges.get(dLabel) == null) {
 			return false;
-		}
+		} 
 		
 		Node sNode = nodes_label.get(sLabel);
 		Node dNode = nodes_label.get(dLabel);
